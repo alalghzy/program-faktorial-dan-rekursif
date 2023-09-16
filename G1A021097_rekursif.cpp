@@ -5,33 +5,35 @@ using namespace std;
 // insertion sort
 void insertionSortRecursive(int arr[], int n)
 {
-	// Base case
+	// Basis kasus: jika hanya ada satu elemen atau array kosong,
+	// itu sudah diurutkan
 	if (n <= 1)
 		return;
 
 	// Urutkan n-1 elemen pertama
-	insertionSortRecursive( arr, n-1 );
+	insertionSortRecursive(arr, n-1);
 
-	//Masukkan elemen terakhir pada posisi yang benar dalam array yang diurutkan.
+	// Ambil elemen terakhir
 	int last = arr[n-1];
 	int j = n-2;
 
-	/* Pindahkan elemen arr[0..i-1], yaitu
-    lebih besar dari kunci, ke satu posisi di depan
-    dari posisi mereka saat ini */
+	/* Pindahkan semua elemen yang lebih besar dari elemen terakhir
+	   satu posisi ke depan dari posisi saat ini */
 	while (j >= 0 && arr[j] > last)
 	{
 		arr[j+1] = arr[j];
 		j--;
 	}
+
+	// Tempatkan elemen terakhir pada posisi yang benar
 	arr[j+1] = last;
 }
 
 // Fungsi utilitas untuk mencetak array berukuran n
 void printArray(int arr[], int n)
 {
-	for (int i=0; i < n; i++)
-		cout << arr[i] <<" ";
+	for (int i = 0; i < n; i++)
+		cout << arr[i] << " ";
 }
 
 /* Program driver untuk menguji jenis penyisipan */
@@ -43,5 +45,5 @@ int main()
 	insertionSortRecursive(arr, n);
 	printArray(arr, n);
 
-  return 0;
+	return 0;
 }
